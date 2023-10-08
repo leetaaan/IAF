@@ -1,5 +1,7 @@
 {
   "name": "qlp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
