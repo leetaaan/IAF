@@ -1,0 +1,43 @@
+<app-header title="Đăng nhập"></app-header>
+
+<ion-content>
+<div class="d-flex-center">
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+        <app-custom-input
+          autocomplete="email"
+          icon="mail-outline"
+          [control]="form.controls.email"
+          type="email"
+          label="Email">
+        </app-custom-input>
+
+        <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+            <div *ngIf="form.controls.email.errors?.['required']">Nhập Email</div>
+            <div *ngIf="form.controls.email.errors?.['email']">Email không đúng định dạng</div>
+        </div>
+
+        <app-custom-input 
+        icon="lock-closed-outline"
+        [control]="form.controls.password"
+          type="password"
+          label="Mật khẩu">
+        </app-custom-input>
+
+          <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+            <div *ngIf="form.controls.email.errors?.['required']">Nhập mật khẩu</div>
+        </div>
+
+        <p routerLink="forgot-password" class="ion-text-end">Quên mật khẩu?</p>
+
+        <ion-button expand="block" class="submit" type="submit" mode="ios" [disabled]="form.invalid">
+            Đăng nhập
+            <ion-icon slot="end" name="log-in-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button class="ion-margin-top" routerLink="sign-up" expand="block"  mode="ios" fill="outline">
+            Đăng ký
+            <ion-icon slot="end" name="person-add-outline"></ion-icon>
+        </ion-button>
+      </form>
+</div>
+</ion-content>
