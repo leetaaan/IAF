@@ -1,6 +1,8 @@
-import { Injectable, inject } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import {
+  AlertController,
+  AlertOptions,
   LoadingController,
   ModalController,
   ModalOptions,
@@ -16,6 +18,7 @@ export class UtilsService {
   toastCtrl = inject(ToastController);
   router = inject(Router);
   modalController = inject(ModalController);
+  alertController= inject(AlertController)
 
   async takePicture(promptLabelHeader) {
     return await Camera.getPhoto({
@@ -27,6 +30,11 @@ export class UtilsService {
       promptLabelPhoto:'Chọn ảnh từ thư viện',
       promptLabelPicture:'Mở máy ảnh'
     });
+  }
+  async presentAlert(opts?:AlertOptions) {
+    const alert = await this.alertController.create(opts);
+  
+    await alert.present();
   }
 
   loading() {

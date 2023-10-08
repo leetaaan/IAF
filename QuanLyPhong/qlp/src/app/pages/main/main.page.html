@@ -1,13 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>main</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu contentId="menu-content" menuId="menu-content" side="start">
+  <app-header title="Menu"></app-header>
+  <ion-content class="ion-text-center">
+    
+    <ion-icon class="avatar-icon" name="person-circle-outline"></ion-icon>
+    <h4>{{user()?.name}}</h4>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">main</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+    <ion-menu-toggle auto-hide="false" *ngFor="let i of pages">
+      <ion-item [ngClass]="{'active': currentPath===i.url}" [routerLink]="i.url" routerDirection="root" detail>
+        <ion-icon slot="start" [name]="i.icon"></ion-icon>
+        <ion-label>{{i.title}}</ion-label>
+      </ion-item>
+
+    </ion-menu-toggle>
+  </ion-content>
+
+
+  <ion-footer class="ion-no-border safe-p-buttom">
+    <ion-menu-toggle auto-hide="false">
+      <ion-item (click)="signOut()" lines="none">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label>Đăng xuất</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-footer>
+</ion-menu>
+<ion-router-outlet id="menu-content" main></ion-router-outlet>

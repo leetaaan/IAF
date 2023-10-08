@@ -16,7 +16,9 @@ import {
   getDoc,
   addDoc,
   collection,
-  query,updateDoc
+  query,
+  updateDoc,
+  deleteDoc
 } from 'firebase/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { collectionData } from '@angular/fire/firestore';
@@ -26,6 +28,7 @@ import {
   uploadString,
   ref,
   getDownloadURL,
+  deleteObject,
 } from 'firebase/storage';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
@@ -64,13 +67,16 @@ export class FirebaseService {
 
   getCollectionData(path: string, collectionQuery?: any) {
     const ref = collection(getFirestore(), path);
-    return collectionData(query(ref, collectionQuery), { idField: 'id' });
+    return collectionData(query(ref, ...collectionQuery), { idField: 'id' });
   }
   setDocument(path: string, data: any) {
     return setDoc(doc(getFirestore(), path), data);
   }
   updateDocument(path: string, data: any) {
     return updateDoc(doc(getFirestore(), path), data);
+  }
+  deleteDocument(path: string) {
+    return deleteDoc(doc(getFirestore(), path));
   }
   async getDocument(path: string) {
     return (await getDoc(doc(getFirestore(), path))).data();
@@ -87,5 +93,8 @@ export class FirebaseService {
   }
   async getFilePath(url: string) {
     return ref(getStorage(), url).fullPath;
+  }
+  deleteFile(path:string){
+    return deleteObject(ref(getStorage(),path))
   }
 }
