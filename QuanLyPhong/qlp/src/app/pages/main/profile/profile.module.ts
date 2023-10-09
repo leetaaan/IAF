@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core'
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule
+    ProfilePageRoutingModule,
+    SharedModule
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ProfilePageModule {}

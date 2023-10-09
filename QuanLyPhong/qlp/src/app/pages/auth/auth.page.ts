@@ -31,7 +31,6 @@ export class AuthPage implements OnInit {
           this.getUserInfo(res.user.uid)
         })
         .catch((error) => {
-          console.log(error);
           this.utilsSer.presentToast({
             message:error.message,
             duration:2500,

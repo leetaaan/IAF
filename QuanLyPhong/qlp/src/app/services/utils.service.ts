@@ -68,4 +68,5 @@ export class UtilsService {
   dismissModal(data?: any) {
     return this.modalController.dismiss(data);
   }
+
 }
