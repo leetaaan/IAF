@@ -3,7 +3,6 @@
 
 
 <ion-content>
-
 <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
   <ion-refresher-content></ion-refresher-content>
 </ion-refresher>
@@ -28,7 +27,6 @@
       </ion-item>
 
       <ion-item-options>
-
         <ion-item-option (click)="addUpdate(i)">
           <ion-icon class="option-btn" name="create-outline"></ion-icon>
         </ion-item-option>
@@ -36,7 +34,6 @@
         <ion-item-option (click)="presentAlertConfirm(i)" color="danger">
           <ion-icon class="option-btn" name="trash-outline"></ion-icon>
         </ion-item-option>
-
     </ion-item-options>
 
     </ion-item-sliding>

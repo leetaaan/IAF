@@ -65,12 +65,13 @@ export class AddUpdateComponent implements OnInit {
         this.utilsSer.dismissModal({ success: true });
 
         this.utilsSer.presentToast({
-          message: 'them thanh cong',
+          message: 'Thêm thành công',
           duration: 2500,
           color: 'success',
           position: 'middle',
           icon: 'checkmark-circle-outline',
         });
+        loading.dismiss();
       })
       .catch((error) => {
         console.log(error);
@@ -106,7 +107,7 @@ export class AddUpdateComponent implements OnInit {
         this.utilsSer.dismissModal({ success: true });
 
         this.utilsSer.presentToast({
-          message: 'them thanh cong',
+          message: 'Sửa thành công',
           duration: 2500,
           color: 'success',
           position: 'middle',
@@ -122,6 +123,7 @@ export class AddUpdateComponent implements OnInit {
           position: 'middle',
           icon: 'alert-circle-outline',
         });
+        loading.dismiss();
       })
       .finally(() => {
         loading.dismiss();

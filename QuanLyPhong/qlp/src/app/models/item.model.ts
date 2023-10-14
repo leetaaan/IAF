@@ -5,5 +5,6 @@ export interface Item {
   price: number,
   room: number,
   time: string,
-
+  imageE:string,
+  imageW:string,
 }

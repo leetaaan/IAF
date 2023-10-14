@@ -1,5 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
-import { GoogleMap,Marker } from '@capacitor/google-maps';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  inject,
+} from '@angular/core';
+import { GoogleMap, Marker } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/user.model';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -10,9 +16,8 @@ import { UtilsService } from 'src/app/services/utils.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage {
-
   utilsSer = inject(UtilsService);
-  
+
   @ViewChild('map')
   mapRef: ElementRef;
   map: GoogleMap;
@@ -36,20 +41,22 @@ export class ProfilePage {
         zoom: 17,
       },
     });
-    await this.addMarkers()
+    await this.addMarkers();
   }
-  async addMarkers(){
-    const markers: Marker[]=[{
-      coordinate:{
-        lat: 11.9545604,
+  async addMarkers() {
+    const markers: Marker[] = [
+      {
+        coordinate: {
+          lat: 11.9545604,
           lng: 108.4442049,
+        },
+        title: 'localhost',
+        snippet: 'bla bla',
       },
-      title:'localhost',
-      snippet:'bla bla',
-    },];
-    const result=await this.map.addMarkers(markers);
-this.map.setOnMarkerClickListener(async(markers)=>{
-  console.log(markers)
-})
+    ];
+    const result = await this.map.addMarkers(markers);
+    this.map.setOnMarkerClickListener(async (markers) => {
+      console.log(markers);
+    });
   }
 }

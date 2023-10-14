@@ -103,7 +103,7 @@ doRefresh(event) {
       .then(async (res) => {
         this.items = this.items.filter((i) => i.id !== item.id);
         this.utilsSer.presentToast({
-          message: 'xoa thanh cong',
+          message: 'Xóa thành công',
           duration: 2500,
           color: 'success',
           position: 'middle',

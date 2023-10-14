@@ -67,7 +67,8 @@
 
     <app-custom-input
       [control]="form.controls.time"
-      type="datetime"
+      type="date"
+      format="yyyy-MM-dd"
       label="Ngày hết hạn hợp đồng"
     >
     </app-custom-input>
@@ -79,11 +80,18 @@
         Nhập ngày hết hạn hợp đồng
       </div>
     </div>
+    
+    <!-- <ion-datetime-button [formControl]="form.controls.time" datetime="datetime"></ion-datetime-button>
+
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime [showDefaultButtons]="true" doneText="Chọn" cancelText="Hủy" id="datetime"></ion-datetime>
+      </ng-template>
+    </ion-modal> -->
 
     <ion-button
       class="ion-margin"
       type="submit"
-      mode="ios"
       [disabled]="form.invalid"
     >
       {{ item ? "Sửa" : "Tạo" }}

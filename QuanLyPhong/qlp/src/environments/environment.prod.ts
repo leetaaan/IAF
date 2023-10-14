@@ -8,4 +8,6 @@ export const environment = {
     messagingSenderId: '638893371158',
     appId: '1:638893371158:web:2300a6a25759232898aa37',
   },
+  mapskey: 'AIzaSyCVG0qhU7IiwCdzYOnPAMKFEzqv9WmVDss',
+
 };
