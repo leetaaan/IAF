@@ -5,8 +5,8 @@
     [formGroup]="form"
     class="ion-padding ion-text-center"
     (ngSubmit)="submit()"
-    (keypress.enter)="submit()"
-  >
+    (keypress.enter)="submit()">
+    
     <ion-avatar *ngIf="form.value.image">
       <img [src]="form.value.image" />
     </ion-avatar>
@@ -16,8 +16,7 @@
       name="image-outline"
     ></ion-icon>
     <br />
-    <ion-label
-      >Hợp đồng
+    <ion-label>
       <br />
       <ion-button (click)="takeImg()" shape="round"> Chọn ảnh </ion-button>
     </ion-label>
@@ -25,15 +24,14 @@
     <app-custom-input
       [control]="form.controls.room"
       type="text"
-      label="Số phòng"
-      (ionInput)="setNumberInputs()"
-    >
+      label="Tiêu đề"
+      (ionInput)="setNumberInputs()">
     </app-custom-input>
     <div
       class="validators"
       *ngIf="form.controls.room.errors && form.controls.room.touched"
     >
-      <div *ngIf="form.controls.room.errors?.['required']">Nhập số phòng</div>
+      <div *ngIf="form.controls.room.errors?.['required']">Nhập tiêu đề</div>
     </div>
 
     <app-custom-input

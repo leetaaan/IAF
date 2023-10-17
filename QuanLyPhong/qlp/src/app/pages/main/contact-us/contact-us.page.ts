@@ -11,11 +11,11 @@ import { User } from 'src/app/models/user.model';
 import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+  selector: 'app-contact-us',
+  templateUrl: './contact-us.page.html',
+  styleUrls: ['./contact-us.page.scss'],
 })
-export class ProfilePage {
+export class ContactUsPage {
   utilsSer = inject(UtilsService);
 
   @ViewChild('map')

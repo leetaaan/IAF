@@ -9,15 +9,20 @@ const routes: Routes = [
     component: MainPage,
     children:[
       {
-        path: 'profile',
-        loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+        path: 'contact-us',
+        loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
       },
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-      }
+      },
+      // {
+      //   path: 'contact-us',
+      //   loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
+      // }
     ]
   },
+
 
 ];
 

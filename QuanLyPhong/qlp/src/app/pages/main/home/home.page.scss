@@ -1,0 +1,63 @@
+ion-content {
+    .category {
+        margin-top: 111px;
+        color: #000;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .btn-category {
+        margin-top: 5px;
+        display: inline-flex;
+        align-items: flex-end;
+        gap: 15px;
+        ion-button {
+            height: 26px;
+            display: flex;
+            padding: 7px 9px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 20px;
+            border: 1px solid var(--fouth-4, #424530);
+            color: #000;
+
+            font-family: Montserrat;
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
+    .postAndBtn{
+        
+        .post {
+            color: var(--fouth-4, #424530);
+            font-family: Montserrat;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        .viewall {
+            width: 96px;
+            height: 25px;
+            display: flex;
+            padding: 5px 15px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 30px;
+            background: var(--fouth-4, #424530);
+    
+            color: #fff;
+            font-family: Montserrat;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
+}

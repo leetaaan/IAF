@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePageRoutingModule } from './profile-routing.module';
+import { ContactUsPageRoutingModule } from './contact-us-routing.module';
 
-import { ProfilePage } from './profile.page';
+import { ContactUsPage } from './contact-us.page';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core'
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -15,10 +15,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule,
+    ContactUsPageRoutingModule,
     SharedModule
   ],
-  declarations: [ProfilePage],
+  declarations: [ContactUsPage],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ProfilePageModule {}
+export class ContactUsPageModule {}
