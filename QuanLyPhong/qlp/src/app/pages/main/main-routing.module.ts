@@ -16,12 +16,18 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
       },
-      // {
-      //   path: 'contact-us',
-      //   loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
-      // }
+      {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+      },
     ]
+  },  {
+    path: 'manager-rooms',
+    loadChildren: () => import('./manager-rooms/manager-rooms.module').then( m => m.ManagerRoomsPageModule)
   },
+
+
+
 
 
 ];

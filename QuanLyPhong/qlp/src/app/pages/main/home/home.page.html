@@ -32,11 +32,12 @@
         <ion-avatar slot="start">
           <img [src]="i.image" />
         </ion-avatar>
-        <ion-label class="name">Phòng: {{i.room}}
+        <ion-label class="name">{{i.title}}
           <div class="data">
-            <strong>Tên người ở: </strong> {{i.name}} <br>
-            <strong>Tiền hằng tháng: </strong>{{i.price | currency:'VNĐ '}} <br>
-            <strong>Ngày hết hạn hợp đồng: </strong>{{i.time}}
+            {{i.content}} <br>
+            {{i.price | currency:'VND'}}<strong>/1 tháng: </strong><br>
+            <strong>Liên hệ: 0</strong>{{i.contact}} <br>
+            <strong>Địa chỉ: </strong>{{i.address}}
           </div>
         </ion-label>
       </ion-item>

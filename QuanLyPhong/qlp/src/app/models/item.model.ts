@@ -1,10 +1,9 @@
 export interface Item {
   id: string,
   image: string,
-  name: string,
+  title: string,
   price: number,
-  room: number,
-  time: string,
-  imageE:string,
-  imageW:string,
+  contact: number,
+  content:string,
+  address:string
 }

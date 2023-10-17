@@ -7,6 +7,7 @@
     (ngSubmit)="submit()"
     (keypress.enter)="submit()">
     
+    <!-- them img -->
     <ion-avatar *ngIf="form.value.image">
       <img [src]="form.value.image" />
     </ion-avatar>
@@ -20,37 +21,60 @@
       <br />
       <ion-button (click)="takeImg()" shape="round"> Chọn ảnh </ion-button>
     </ion-label>
+    <div
+    class="validators"
+    *ngIf="form.controls.image.errors && form.controls.image.touched"
+  >
+    <div *ngIf="form.controls.image.errors?.['required']">Vui lòng thêm ảnh</div>
+  </div>
 
+<!-- them tieu de -->
     <app-custom-input
-      [control]="form.controls.room"
+      [control]="form.controls.title"
       type="text"
       label="Tiêu đề"
       (ionInput)="setNumberInputs()">
     </app-custom-input>
     <div
       class="validators"
-      *ngIf="form.controls.room.errors && form.controls.room.touched"
+      *ngIf="form.controls.title.errors && form.controls.title.touched"
     >
-      <div *ngIf="form.controls.room.errors?.['required']">Nhập tiêu đề</div>
+      <div *ngIf="form.controls.title.errors?.['required']">Nhập tiêu đề</div>
     </div>
 
+    <!-- them noi dung -->
     <app-custom-input
-      [control]="form.controls.name"
+      [control]="form.controls.content"
       type="text"
-      label="Tên người ở"
+      label="Nội dung bài viết"
     >
     </app-custom-input>
     <div
       class="validators"
-      *ngIf="form.controls.name.errors && form.controls.name.touched"
+      *ngIf="form.controls.content.errors && form.controls.content.touched"
     >
-      <div *ngIf="form.controls.name.errors?.['required']">Nhập tên</div>
+      <div *ngIf="form.controls.content.errors?.['required']">Nhập nội dung</div>
     </div>
 
+        <!-- them dia chi -->
+    <app-custom-input
+      [control]="form.controls.address"
+      type="text"
+      label="Địa chỉ"
+    >
+    </app-custom-input>
+    <div
+      class="validators"
+      *ngIf="form.controls.address.errors && form.controls.address.touched"
+    >
+      <div *ngIf="form.controls.address.errors?.['required']">Nhập địa chỉ</div>
+    </div>
+
+    <!-- them gia -->
     <app-custom-input
       [control]="form.controls.price"
       type="number"
-      label="Tiền phòng/tháng"
+      label="Tiền phòng 1 tháng"
       (ionInput)="setNumberInputs()"
     >
     </app-custom-input>
@@ -63,7 +87,23 @@
       </div>
     </div>
 
+    <!-- them lien he -->
     <app-custom-input
+    [control]="form.controls.contact"
+    type="tel"
+    label="Số điện thoại"
+    (ionInput)="setNumberInputs()"
+  >
+  </app-custom-input>
+  <div
+    class="validators"
+    *ngIf="form.controls.contact.errors && form.controls.contact.touched">
+    <div *ngIf="form.controls.contact.errors?.['required']">
+      Nhập số điện thoại
+    </div>
+  </div>
+
+    <!-- <app-custom-input
       [control]="form.controls.time"
       type="date"
       format="yyyy-MM-dd"
@@ -77,7 +117,7 @@
       <div *ngIf="form.controls.time.errors?.['required']">
         Nhập ngày hết hạn hợp đồng
       </div>
-    </div>
+    </div> -->
     
     <!-- <ion-datetime-button [formControl]="form.controls.time" datetime="datetime"></ion-datetime-button>
 

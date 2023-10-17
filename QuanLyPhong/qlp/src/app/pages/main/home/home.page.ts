@@ -39,12 +39,12 @@ doRefresh(event) {
 
 
   getItems() {
-    let path = `rooms`;
+    let path = `posts`;
 
     this.loading = true;
 
     let query = [
-      orderBy('room', 'asc'), 
+      orderBy('title', 'asc'), 
    //where('room', '<', 199)
   ];
     let sub = this.firebaseSer.getCollectionData(path, query).subscribe({
