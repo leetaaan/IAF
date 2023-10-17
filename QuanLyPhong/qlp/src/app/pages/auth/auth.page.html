@@ -4,6 +4,7 @@
 <div class="d-flex-center">
     <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
         <app-custom-input
+          class="input"
           autocomplete="email"
           icon="mail-outline"
           [control]="form.controls.email"
