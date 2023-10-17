@@ -1,0 +1,15 @@
+.welcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+    color: var(--ion-color-4);
+    font-size: 2em;
+    font-weight: bold;
+}
+ion-col {
+    text-align: center;
+  }
+ion-img{
+padding-right: 10px;
+}

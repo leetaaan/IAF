@@ -1,0 +1,34 @@
+<app-header title="About"></app-header>
+
+
+<ion-content>
+  <ion-item class="ion-text-wrap" lines="none">
+    <h1>Ứng dụng xây dựng giải quyết vấn đề phòng trọ cho sinh viên tại Đà Lạt</h1>
+  </ion-item>
+
+  <ion-item lines="none">
+    <h1>Thông tin liên hệ:</h1>
+  </ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">Liên hệ:</ion-label>
+      <ion-text>{{user()?.name}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Điện thoại:</ion-label>
+      <ion-text>123456789</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Zalo:</ion-label>
+      <ion-text>123456789</ion-text>
+    </ion-item>
+  </ion-list>
+
+  <ion-item lines="none">
+    <h1>Trụ sở:</h1>
+  </ion-item>
+  <ion-item>
+    <p>Địa chỉ: 1 đường Phù Đổng Thiên Vương P.8, Thành Phố Đà Lạt</p>
+  </ion-item>
+  <capacitor-google-map #map></capacitor-google-map>
+</ion-content>

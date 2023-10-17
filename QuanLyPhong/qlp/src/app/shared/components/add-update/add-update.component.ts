@@ -15,11 +15,12 @@ export class AddUpdateComponent implements OnInit {
 
   form = new FormGroup({
     id: new FormControl(''),
-    image: new FormControl(''),
-    room: new FormControl(null, [Validators.required]),
-    name: new FormControl('', [Validators.required]),
+    image: new FormControl('',[Validators.required]),
+    title: new FormControl('', [Validators.required]),
+    content: new FormControl('', [Validators.required]),
+    contact: new FormControl(null, [Validators.required]),
     price: new FormControl(null, [Validators.required]),
-    time: new FormControl('', [Validators.required]),
+    address: new FormControl('',[Validators.required])
   });
 
   firebaseSer = inject(FirebaseService);
@@ -44,17 +45,17 @@ export class AddUpdateComponent implements OnInit {
     }
   }
   setNumberInputs() {
-    let { room, price } = this.form.controls;
-    if (room.value) room.setValue(parseFloat(room.value));
+    let { contact, price } = this.form.controls;
+    if (contact.value) contact.setValue(parseFloat(contact.value));
     if (price.value) price.setValue(parseFloat(price.value));
   }
   async createItem() {
-    let path = `rooms`;
+    let path = `posts`;
     const loading = await this.utilsSer.loading();
     await loading.present();
 
     let dataUrl = this.form.value.image;
-    let imgpath = `rooms/${Date.now()}`;
+    let imgpath = `posts/${Date.now()}`;
     let imgUrl = await this.firebaseSer.uploadImage(imgpath, dataUrl);
     this.form.controls.image.setValue(imgUrl);
 
@@ -65,19 +66,20 @@ export class AddUpdateComponent implements OnInit {
         this.utilsSer.dismissModal({ success: true });
 
         this.utilsSer.presentToast({
-          message: 'them thanh cong',
+          message: 'Thêm thành công',
           duration: 2500,
           color: 'success',
           position: 'middle',
           icon: 'checkmark-circle-outline',
         });
+        loading.dismiss();
       })
       .catch((error) => {
         console.log(error);
         this.utilsSer.presentToast({
           message: error.message,
           duration: 2500,
-          color: 'primary',
+          color: 'red',
           position: 'middle',
           icon: 'alert-circle-outline',
         });
@@ -87,7 +89,7 @@ export class AddUpdateComponent implements OnInit {
       });
   }
   async updateItem() {
-    let path = `rooms/${this.item.id}`;
+    let path = `posts/${this.item.id}`;
     const loading = await this.utilsSer.loading();
     await loading.present();
 
@@ -106,7 +108,7 @@ export class AddUpdateComponent implements OnInit {
         this.utilsSer.dismissModal({ success: true });
 
         this.utilsSer.presentToast({
-          message: 'them thanh cong',
+          message: 'Sửa thành công',
           duration: 2500,
           color: 'success',
           position: 'middle',
@@ -118,10 +120,11 @@ export class AddUpdateComponent implements OnInit {
         this.utilsSer.presentToast({
           message: error.message,
           duration: 2500,
-          color: 'primary',
+          color: 'red',
           position: 'middle',
           icon: 'alert-circle-outline',
         });
+        loading.dismiss();
       })
       .finally(() => {
         loading.dismiss();

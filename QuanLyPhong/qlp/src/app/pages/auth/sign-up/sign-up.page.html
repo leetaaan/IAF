@@ -1,7 +1,8 @@
-<app-header backButton="/auth" title="Đăng ký"></app-header>
+<!-- <app-header title="Đăng nhập"></app-header> -->
 
-<ion-content>
-<div class="d-flex-center">
+<ion-content [fullscreen]="true">
+  <ion-label class="welcome">WELCOME</ion-label>
+  <div class="d-flex-center">
     <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
 
       <app-custom-input
@@ -45,6 +46,39 @@
             Đăng ký
             <ion-icon slot="end" name="person-add-outline"></ion-icon>
         </ion-button>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div
+                style="width: 111px; height: 0px; border: 1px #424530 solid"></div>
+              </ion-col>
+              <ion-col>
+                OR
+              </ion-col>
+              <ion-col>
+          <div style="width: 111px; height: 0px; border: 1px #424530 solid "></div>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+      <ion-button
+      class="ion-margin-top"
+      expand="block"
+      mode="ios"
+      fill="outline"
+    >
+       Facebook
+      <ion-img slot="start" src="../../../assets/icon/Fb.png"></ion-img>
+    </ion-button>
+    <ion-button
+    class="ion-margin-top"
+    expand="block"
+    mode="ios"
+    fill="outline"
+  >
+    Google
+    <ion-img slot="start" src="../../../assets/icon/gg.png"></ion-img>
+  </ion-button>
       </form>
-</div>
+  </div>
 </ion-content>

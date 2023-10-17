@@ -12,7 +12,8 @@ import { UtilsService } from 'src/app/services/utils.service';
 export class MainPage implements OnInit {
   pages = [
     { title: 'Trang chủ', url: '/main/home', icon: 'home-outline' },
-    { title: 'Thông tin', url: '/main/profile', icon: 'person-outline' },
+    { title: 'Map', url: '/main/profile', icon: 'person-outline' },
+
   ];
   router = inject(Router);
   firebaseSer = inject(FirebaseService);

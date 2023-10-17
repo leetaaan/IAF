@@ -1,55 +1,68 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
-import { GoogleMap,Marker } from '@capacitor/google-maps';
-import { environment } from 'src/environments/environment';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Item } from 'src/app/models/item.model';
 import { User } from 'src/app/models/user.model';
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage {
+export class ProfilePage implements OnInit {
 
+  firebaseSer = inject(FirebaseService);
   utilsSer = inject(UtilsService);
-  
-  @ViewChild('map')
-  mapRef: ElementRef;
-  map: GoogleMap;
+
+  ngOnInit() {
+  }
 
   user(): User {
     return this.utilsSer.getFromLocalStorage('user');
   }
-  ionViewDidEnter() {
-    this.createMap();
+  signOut(){
+    this.firebaseSer.signOut()
   }
-  async createMap() {
-    this.map = await GoogleMap.create({
-      id: 'my-map',
-      element: this.mapRef.nativeElement,
-      apiKey: environment.mapskey,
-      config: {
-        center: {
-          lat: 11.9545604,
-          lng: 108.4442049,
-        },
-        zoom: 17,
-      },
-    });
-    await this.addMarkers()
-  }
-  async addMarkers(){
-    const markers: Marker[]=[{
-      coordinate:{
-        lat: 11.9545604,
-          lng: 108.4442049,
-      },
-      title:'localhost',
-      snippet:'bla bla',
-    },];
-    const result=await this.map.addMarkers(markers);
-this.map.setOnMarkerClickListener(async(markers)=>{
-  console.log(markers)
-})
+  async takeImg() {
+    let user =this.user();
+    let path = `users/${user.uid}`;
+
+    const dataUrl = (await this.utilsSer.takePicture('Chọn phương thức')).dataUrl;
+
+    const loading = await this.utilsSer.loading();
+    await loading.present();
+
+    let imgpath = `${user.uid}/profile`;
+    user.image = await this.firebaseSer.uploadImage(imgpath, dataUrl);
+
+
+    this.firebaseSer
+      .updateDocument(path, {image:user.image})
+      .then(async (res) => {
+
+        this.utilsSer.saveInLocalStorage('user',user);
+
+        this.utilsSer.presentToast({
+          message: 'Thêm ảnh thành công',
+          duration: 2500,
+          color: 'success',
+          position: 'middle',
+          icon: 'checkmark-circle-outline',
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.utilsSer.presentToast({
+          message: error.message,
+          duration: 2500,
+          color: 'red',
+          position: 'middle',
+          icon: 'alert-circle-outline',
+        });
+        loading.dismiss();
+      })
+      .finally(() => {
+        loading.dismiss();
+      });
   }
 }

@@ -39,12 +39,12 @@ doRefresh(event) {
 
 
   getItems() {
-    let path = `rooms`;
+    let path = `posts`;
 
     this.loading = true;
 
     let query = [
-      orderBy('room', 'asc'), 
+      orderBy('title', 'asc'), 
    //where('room', '<', 199)
   ];
     let sub = this.firebaseSer.getCollectionData(path, query).subscribe({
@@ -103,7 +103,7 @@ doRefresh(event) {
       .then(async (res) => {
         this.items = this.items.filter((i) => i.id !== item.id);
         this.utilsSer.presentToast({
-          message: 'xoa thanh cong',
+          message: 'Xóa thành công',
           duration: 2500,
           color: 'success',
           position: 'middle',

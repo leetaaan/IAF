@@ -5,10 +5,9 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUpdateComponent } from './components/add-update/add-update.component';
-
 @NgModule({
   declarations: [HeaderComponent, CustomInputComponent,AddUpdateComponent],
-  exports: [HeaderComponent, CustomInputComponent,ReactiveFormsModule,AddUpdateComponent],
+  exports: [HeaderComponent, CustomInputComponent,ReactiveFormsModule,AddUpdateComponent,],
   imports: [CommonModule,IonicModule,ReactiveFormsModule,FormsModule],
 })
 export class SharedModule {}

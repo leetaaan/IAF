@@ -1,51 +1,22 @@
-<app-header title="Thông tin"></app-header>
+<app-header title="Profile"></app-header>
+<ion-content class="ion-padding-top ion-text-center">
+  <ion-avatar>
+    <img *ngIf="user()?.image" [src]="user()?.image" />
+    <ion-icon *ngIf="!user()?.image" class="empty-icon" name="person-circle-outline"></ion-icon>
+  </ion-avatar>
 
-<ion-content>
-  <ion-item lines="none">
-    <h1>Thông tin mô tả:</h1>
-  </ion-item>
-  <ion-item >
-    <ion-label class="ion-text-wrap">
-      <p>
-        Cho thuê phòng trọ đường Phù Đổng Thiên Vương P.8, Thành Phố Đà Lạt. Phòng
-        thoáng mát, yên tĩnh, có bếp, nhà vệ sinh riêng, cáp quang, wifi miễn phí,
-        có gác đúc.
-      </p>
-  
-      <p>Có camera quan sát tất cả các tầng và nhà xe.</p>
-  
-      <p>Diện tích sử dụng từ 18-22 m2. Giá từ 1.800.000 đến 2.100.000 đồng.</p>
-  
-      <p>
-        Địa chỉ: 1 đường Phù Đổng Thiên Vương P.8, Thành Phố Đà Lạt.
-      </p>
-    </ion-label>
- 
-  </ion-item>
+  <ion-button class="photo-btn" (click)="takeImg()" mode="ios" size="small" shape="round">
+    <ion-icon name="camera-outline"></ion-icon>
+  </ion-button>
+  <h2>{{user().name}}</h2>
 
-  <ion-item lines="none">
-    <h1>Thông tin liên hệ:</h1>
+  <ion-item button detail>
+    <ion-icon color="primary" slot="start" name="person-outline"></ion-icon>
+    <ion-label>Thay đổi thông tin</ion-label>
   </ion-item>
-  <ion-list>
-    <ion-item>
-      <ion-label position="fixed">Liên hệ:</ion-label>
-      <ion-text>{{user()?.name}}</ion-text>
-    </ion-item>
-    <ion-item>
-      <ion-label position="fixed">Điện thoại:</ion-label>
-      <ion-text>123456789</ion-text>
-    </ion-item>
-    <ion-item>
-      <ion-label position="fixed">Zalo:</ion-label>
-      <ion-text>123456789</ion-text>
-    </ion-item>
-  </ion-list>
-
-  <ion-item lines="none">
-    <h1>Bản đồ:</h1>
+  
+  <ion-item (click)="signOut()">
+    <ion-icon color="primary" slot="start" name="log-out-outline"></ion-icon>
+    <ion-label>Đăng xuất</ion-label>
   </ion-item>
-  <ion-item>
-    <p>Địa chỉ: 1 đường Phù Đổng Thiên Vương P.8, Thành Phố Đà Lạt</p>
-  </ion-item>
-  <capacitor-google-map #map></capacitor-google-map>
 </ion-content>
