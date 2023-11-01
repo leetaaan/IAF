@@ -20,11 +20,17 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
       },
+      {
+        path: 'about-us',
+        loadChildren: () => import('./about-us/about-us.module').then( m => m.AboutUsPageModule)
+      },
     ]
-  },  {
+  },
+  {
     path: 'manager-rooms',
     loadChildren: () => import('./manager-rooms/manager-rooms.module').then( m => m.ManagerRoomsPageModule)
   },
+
 
 
 

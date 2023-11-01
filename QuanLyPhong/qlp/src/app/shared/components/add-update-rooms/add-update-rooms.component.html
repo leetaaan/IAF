@@ -1,0 +1,69 @@
+<app-header [isModal]="true" [title]="room ? 'Sửa' : 'Tạo'"></app-header>
+
+<ion-content>
+    <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()" (keypress.enter)="submit()">
+        <ion-avatar *ngIf="form.value.image">
+            <img [src]="form.value.image" />
+          </ion-avatar>
+          <ion-icon class="image-icon" *ngIf="!form.value.image" name="image-outline"></ion-icon>
+          <br>
+            <ion-label>Hợp đồng
+                <br>
+                <ion-button (click)="takeImg()"  shape="round">
+                    Chọn ảnh
+                </ion-button>
+            </ion-label>
+            <div
+            class="validators"
+            *ngIf="form.controls.image.errors && form.controls.image.touched"
+          >
+            <div *ngIf="form.controls.image.errors?.['required']">Vui lòng thêm ảnh</div>
+          </div>
+
+            <app-custom-input
+            [control]="form.controls.room"
+            type="text"
+            label="Số phòng">
+          </app-custom-input>
+          <div class="validators" *ngIf="form.controls.room.errors && form.controls.room.touched">
+              <div *ngIf="form.controls.room.errors?.['required']">Nhập số phòng</div>
+          </div>    
+
+        <app-custom-input
+        [control]="form.controls.name"
+        type="text"
+        label="Tên người ở">
+      </app-custom-input>
+      <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
+          <div *ngIf="form.controls.name.errors?.['required']">Nhập tên</div>
+      </div>       
+
+
+        <app-custom-input
+        [control]="form.controls.price"
+        type="number"
+        label="Tiền phòng/tháng">
+      </app-custom-input>
+      <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched">
+          <div *ngIf="form.controls.price.errors?.['required']">Nhập số tiền phòng 1 tháng</div>
+      </div> 
+
+      <app-custom-input
+      [control]="form.controls.time"
+      type="date"
+      label="Ngày hết hạn hợp đồng">
+    </app-custom-input>
+    <div class="validators" *ngIf="form.controls.time.errors && form.controls.time.touched">
+        <div *ngIf="form.controls.time.errors?.['required']">Nhập ngày hết hạn hợp đồng</div>
+    </div> 
+
+    <ion-button
+    class="ion-margin"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    {{ room ? "Sửa" : "Tạo" }}
+    <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+  </ion-button>
+        </form>
+</ion-content>

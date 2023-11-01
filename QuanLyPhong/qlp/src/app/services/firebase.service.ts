@@ -21,7 +21,7 @@ import {
   deleteDoc
 } from 'firebase/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { collectionData } from '@angular/fire/firestore';
+import { Firestore,collectionData, docData } from '@angular/fire/firestore';
 import { UtilsService } from './utils.service';
 import {
   getStorage,
@@ -31,6 +31,8 @@ import {
   deleteObject,
 } from 'firebase/storage';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Observable } from 'rxjs';
+import { Item } from '../models/item.model';
 
 @Injectable({
   providedIn: 'root',
@@ -40,7 +42,7 @@ export class FirebaseService {
   fireStore = inject(AngularFirestore);
   utilSer = inject(UtilsService);
   storage = inject(AngularFireStorage);
-
+  private firestore: Firestore
   getAuth() {
     return getAuth();
   }
@@ -65,10 +67,17 @@ export class FirebaseService {
     return sendPasswordResetEmail(getAuth(), email);
   }
 
+
+
   getCollectionData(path: string, collectionQuery?: any) {
     const ref = collection(getFirestore(), path);
     return collectionData(query(ref, ...collectionQuery), { idField: 'id' });
   }
+  // getPostsById(id): Observable<Item> {
+  //   const noteDocRef = doc(this.firestore, `posts/${id}`);
+  //   return docData(noteDocRef, { idField: 'id' }) as Observable<Item>;
+  // }
+
   setDocument(path: string, data: any) {
     return setDoc(doc(getFirestore(), path), data);
   }

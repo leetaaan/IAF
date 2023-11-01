@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
 import { Item } from 'src/app/models/item.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -65,4 +67,7 @@ export class ProfilePage implements OnInit {
         loading.dismiss();
       });
   }
+  // goForgotPass(){
+  //   this.utilsSer.routerLink('/auth/forgot-password');
+  // }
 }

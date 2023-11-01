@@ -1,10 +1,16 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { AddUpdateComponent } from 'src/app/shared/components/add-update/add-update.component';
 import { orderBy, where } from 'firebase/firestore';
+import { RouterLink } from '@angular/router';
+
+import { Auth, authState } from '@angular/fire/auth';
+import { doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { IonContent, IonicModule } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -12,14 +18,25 @@ import { orderBy, where } from 'firebase/firestore';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  @ViewChild(IonContent) content: IonContent;
+
+
+
   firebaseSer = inject(FirebaseService);
   utilsSer = inject(UtilsService);
 
   items: Item[] = [];
   loading: boolean = false;
 
-  ngOnInit() {}
-  
+  slides=[
+    './assets/icon/kenny-eliason-Wp7t4cWN-68-unsplash.jpg',
+    './assets/icon/naomi-hebert-2dcYhvbHV-M-unsplash.jpg',
+    './assets/icon/nathan-fertig-FBXuXp57eM0-unsplash.jpg',
+  ]
+
+  ngOnInit():void {
+  }
+
   user(): User {
     return this.utilsSer.getFromLocalStorage('user');
   }
@@ -28,15 +45,12 @@ export class HomePage implements OnInit {
     this.getItems();
   }
 
-doRefresh(event) {
-  setTimeout(() => {
-    this.getItems();
-    event.target.complete();
-  }, 1000);
-}
-
-
-
+  doRefresh(event) {
+    setTimeout(() => {
+      this.getItems();
+      event.target.complete();
+    }, 1000);
+  }
 
   getItems() {
     let path = `posts`;
@@ -44,9 +58,9 @@ doRefresh(event) {
     this.loading = true;
 
     let query = [
-      orderBy('title', 'asc'), 
-   //where('room', '<', 199)
-  ];
+      orderBy('title', 'asc'),
+      //where('room', '<', 199)
+    ];
     let sub = this.firebaseSer.getCollectionData(path, query).subscribe({
       next: (res: any) => {
         console.log(res);
@@ -123,5 +137,22 @@ doRefresh(event) {
       .finally(() => {
         loading.dismiss();
       });
+  }
+  gotoMR() {
+    this.utilsSer.routerLink('/main/manager-rooms');
+  }
+  gotoContact() {
+    this.utilsSer.routerLink('/main/contact-us');
+  }
+  scrollToTop() {
+    // Passing a duration to the method makes it so the scroll slowly
+    // goes to the top instead of instantly
+    this.content.scrollToTop(500);
+  }
+  search(event) {
+   
+  }
+  swiperSlideChanged(e:any){
+    console.log('changed: ',e)
   }
 }

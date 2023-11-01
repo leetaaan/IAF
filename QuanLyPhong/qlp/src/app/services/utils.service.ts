@@ -31,6 +31,7 @@ export class UtilsService {
       promptLabelPicture:'Mở máy ảnh'
     });
   }
+  
   async presentAlert(opts?:AlertOptions) {
     const alert = await this.alertController.create(opts);
   

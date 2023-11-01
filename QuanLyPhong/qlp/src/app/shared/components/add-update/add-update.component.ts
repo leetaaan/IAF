@@ -20,7 +20,9 @@ export class AddUpdateComponent implements OnInit {
     content: new FormControl('', [Validators.required]),
     contact: new FormControl(null, [Validators.required]),
     price: new FormControl(null, [Validators.required]),
-    address: new FormControl('',[Validators.required])
+    address: new FormControl('',[Validators.required]),
+    
+    
   });
 
   firebaseSer = inject(FirebaseService);

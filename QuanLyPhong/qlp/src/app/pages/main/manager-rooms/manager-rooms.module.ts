@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ManagerRoomsPageRoutingModule } from './manager-rooms-routing.module';
 
 import { ManagerRoomsPage } from './manager-rooms.page';
+import { SharedModule } from "../../../shared/shared.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ManagerRoomsPageRoutingModule
-  ],
-  declarations: [ManagerRoomsPage]
+    declarations: [ManagerRoomsPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ManagerRoomsPageRoutingModule,
+        SharedModule
+    ]
 })
 export class ManagerRoomsPageModule {}

@@ -1,0 +1,28 @@
+ion-content {
+    --background: #424530;
+    .container {
+        text-align: center;
+        justify-content: center;
+        margin-top: 10%;
+        ion-img {
+            position: relative;
+            width: 100%;
+            height: 180px;
+        }
+        ion-title {
+            color: #fff;
+            font-family: Montserrat;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
+    ion-fab-button {
+        --background: #FFF0CD;
+        ion-icon {
+            color: #000;
+            font-size: 24px;
+        }
+    }
+}
